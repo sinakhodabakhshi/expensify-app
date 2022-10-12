@@ -6,7 +6,7 @@ import numeral from 'numeral';
   
 const ExpensesSummery = ({expensesCount , expensesTotal}) => {
     const expenseWord = expensesCount === 1 ? "expense" : "expenses";
-    const totall = numeral(expensesTotal/100).format('$0.0.00');
+    const totall = numeral(expensesTotal/100).format('$0.00.00');
 
     return(
     <div>
