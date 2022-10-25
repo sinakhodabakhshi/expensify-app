@@ -1,3 +1,9 @@
+.dashboard {
+    @media (max-height: 800px){
+        margin-bottom: 2.5*$l-size;
+    }
+}
+
 .chart-content{
     display: flex;
     flex-direction: column;

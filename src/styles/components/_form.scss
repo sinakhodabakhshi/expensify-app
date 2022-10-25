@@ -4,6 +4,9 @@
     > * {
         margin-bottom: $m-size;
     }
+    @media (max-height: 730px) {
+        margin-bottom: 2.5*$l-size;
+    }
 }
 
 .form__error {

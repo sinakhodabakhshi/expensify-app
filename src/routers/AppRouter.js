@@ -12,6 +12,7 @@ import PublicRoute from './PublicRoute';
 import AddIncomePage from '../components/AddIncomePage';
 import IncomeDashboardPage from '../components/IncomeDashboardPage';
 import Dashboard from '../components/Dashboard';
+import SideBarNav from '../components/SideBarNav';
 
 export const history = createHistory();
 

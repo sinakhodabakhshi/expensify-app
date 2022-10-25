@@ -8,7 +8,7 @@
 }
 
 .list-body {
-    margin-bottom: $m-size;
+    margin-bottom: 3*$l-size;
     @media (min-width: $desktop-breakpoint) {
         margin-bottom: $l-size;
     }

@@ -2,7 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 
-export default () => (
+
+
+const SideBarNav = () => (
     <nav className="side-bar">
       <div className="side-bar__content" >
         <NavLink to='/dashboard' className='side-bar__link' activeClassName="active">
@@ -20,3 +22,5 @@ export default () => (
       </div>
     </nav>
 )
+
+export default SideBarNav;
