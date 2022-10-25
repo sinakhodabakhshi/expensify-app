@@ -21,3 +21,30 @@
         margin-bottom: $l-size;
     }
 }
+
+.btn-third {
+    background:rgb(179, 2, 2);
+    margin-right: 5px;
+}
+
+.btn-chart {
+    border: 2px solid rgb(8, 64, 168);
+    background: $off-white;
+    color: rgb(8, 64, 168);
+    margin-right: 2px;
+    transition: background 0.15s;
+}
+
+.btn-chart:hover {
+    background: rgb(8, 64, 168);
+    color: white;
+}
+
+.btn-chart-active {
+    background: rgb(8, 64, 168);
+    color: white;
+}
+
+.btn-chart-selector {
+    padding: $s-size $l-size+0.2;
+}

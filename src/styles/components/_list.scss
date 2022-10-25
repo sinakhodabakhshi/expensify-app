@@ -20,6 +20,7 @@
     color: $dark-gray;
     display: flex;
     flex-direction: column;
+    position: relative;
     padding: $s-size;
     text-decoration: none;
     transition: background .3s ease;
@@ -54,6 +55,21 @@
 .list-item__subtitle {
     color: $gray;
     font-size: $font-size-small;
+}
+
+.list-item__type {
+    border-radius: 10px;
+    background: rgba(245, 1, 1 , .6);
+    color: $off-white;
+    position: absolute;
+    padding: $s-size/6 $s-size/2;
+    left: $l-size*3;
+    top: $m-size;
+    text-align: center;
+    p{
+        font-size: $s-size;
+        margin: 0;
+    }
 }
 
 .list-item__data {

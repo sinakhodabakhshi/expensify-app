@@ -11,6 +11,7 @@ export default class ExpenseForm extends React.Component {
       note: props.expense ? props.expense.note : '',
       amount: props.expense ? (props.expense.amount / 100).toString() : '',
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      type: props.expense ? (props.expense.type) : 'type-none',
       calendarFocused: false,
       error: ''
     };
@@ -18,10 +19,6 @@ export default class ExpenseForm extends React.Component {
   onDescriptionChange = (e) => {
     const description = e.target.value;
     this.setState(() => ({ description }));
-  };
-  onNoteChange = (e) => {
-    const note = e.target.value;
-    this.setState(() => ({ note }));
   };
   onAmountChange = (e) => {
     const amount = e.target.value;
@@ -34,6 +31,16 @@ export default class ExpenseForm extends React.Component {
     if (createdAt) {
       this.setState(() => ({ createdAt }));
     }
+  };
+  onTypeChange = (e) => {
+    const type = e.target.value;
+    this.setState(() => ({
+      type
+    }))
+  };
+  onNoteChange = (e) => {
+    const note = e.target.value;
+    this.setState(() => ({ note }));
   };
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
@@ -49,10 +56,12 @@ export default class ExpenseForm extends React.Component {
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
         createdAt: this.state.createdAt.valueOf(),
+        type: this.state.type,
         note: this.state.note
       });
     }
   };
+
   render() {
     return (
         <form className='form' onSubmit={this.onSubmit}>
@@ -80,6 +89,25 @@ export default class ExpenseForm extends React.Component {
             numberOfMonths={1}
             isOutsideRange={() => false}
           />
+             {this.props.caller === 'expenses' ? (
+              <select onChange={this.onTypeChange} value={this.state.type} className='select' >
+                <option value="Type-none">Type-none</option>
+                <option value="Repayment(Loan)">Repayment(Loan)</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Debt">Debt</option>
+                <option value="Additional costs">Additional costs</option>
+                <option value="Rent">Rent</option>
+              </select>
+             ) : (
+              <select onChange={this.onTypeChange} value={this.state.type} className='select' >
+                <option value="salary(year)">salary(year)</option>
+                <option value="salary(month)">salary(month)</option>
+                <option value="sell(item)">sell(item)</option>
+                <option value="side-job">side-job</option>
+                <option value="project-paycheck">project-paycheck</option>
+                <option value="pension">pension</option>
+              </select>
+             ) }
           <textarea
             placeholder="Add a note for your expense (optional)"
             className='textarea'

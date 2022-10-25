@@ -1,0 +1,12 @@
+.chart-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin: $s-size auto;
+}

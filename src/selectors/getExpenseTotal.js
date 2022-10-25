@@ -1,4 +1,3 @@
-import selectExpenses from '../selectors/expenses';
 
 export default (expenses) => {
   return expenses

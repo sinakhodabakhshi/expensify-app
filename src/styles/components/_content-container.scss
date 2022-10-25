@@ -1,5 +1,12 @@
 .content-container {
     margin: 0 auto;
+    margin-left: 3*$l-size ;
+    @media (min-width: 1000px) {
+        margin-left: auto ;
+    }
+    @media (max-width: $desktop-breakpoint) {
+        margin-left: auto ;
+    }
     padding: 0 $m-size;
     max-width: 80rem;
 }

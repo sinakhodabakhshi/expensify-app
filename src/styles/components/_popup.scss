@@ -1,0 +1,38 @@
+.popup-box {
+    align-items: center;
+    background: rgb(1, 114, 1);
+    border-radius: 3px;
+    bottom: 2.7*$l-size;
+    @media (min-width: $desktop-breakpoint) {
+        bottom:$m-size;
+    }
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    padding: 0 0 0 $s-size;
+    right: $s-size;
+    z-index:1;
+    visibility: visible;
+}
+
+.popup-box__title {
+    padding-right: $s-size;
+}
+
+.popup-box__btn-box{
+    align-items: center;
+    background: rgb(1, 95, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 $s-size;
+    p{
+        padding: 0 $s-size;
+    }
+}
+
+.popup-visibility {
+    display: none;
+}

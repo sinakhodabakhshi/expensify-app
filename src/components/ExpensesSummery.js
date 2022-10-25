@@ -15,7 +15,7 @@ const ExpensesSummery = ({expensesCount , expensesTotal}) => {
        <div className='content-container'>
          <h1 className='page-header__title'>viewing <span>{expensesCount}</span> {expenseWord} - totalling : <span>{totall}</span></h1>
          <div className='page-header__actions'>
-           <Link to="/create" className='btn'>Add expense</Link>
+           <Link to="/addexpense" className='btn'>Add expense</Link>
          </div>
        </div>
     </div>

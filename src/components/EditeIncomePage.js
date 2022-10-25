@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import DeleteModal from './DeleteModal'
-import { startEditExpense , startRemoveExpense } from '../actions/expenses';
+import { startEditIncome , startRemoveIncome } from '../actions/income';
 import { deletePopup , editePopup } from '../actions/popup';
 
 export class EditExpensePage extends React.Component {
@@ -13,9 +13,9 @@ export class EditExpensePage extends React.Component {
     }
   }
 
-  onSubmit = (expense) => {
-    this.props.startEditExpense(this.props.expense.id, expense);
-    this.props.history.push('/expense');
+  onSubmit = (income) => {
+    this.props.startEditIncome(this.props.income.id, income);
+    this.props.history.push('/income');
     this.props.editePopup();
   };
 
@@ -30,9 +30,9 @@ export class EditExpensePage extends React.Component {
       this.setState(() => ({
         visibility: false
       }))
-      this.props.startRemoveExpense({ id: this.props.expense.id }).then(()=>{
+      this.props.startRemoveIncome({ id: this.props.income.id }).then(()=>{
         this.props.deletePopup();
-        this.props.history.push('/expense');
+        this.props.history.push('/income');
       })
     }else {
       this.setState(() => ({
@@ -46,12 +46,12 @@ export class EditExpensePage extends React.Component {
       <div>
         <div className='page-header'>
           <div className='content-container'>
-            <h1 className='page-header__title'>Edit Expense</h1>
+            <h1 className='page-header__title'>Edit Income</h1>
           </div>
       </div>
         <div className='content-container'>
           <ExpenseForm
-            expense={this.props.expense}
+            expense={this.props.income}
             onSubmit={this.onSubmit}
           />
           <button onClick={this.onRemove} className='btn btn-secondry'>Remove Expense</button>
@@ -63,12 +63,12 @@ export class EditExpensePage extends React.Component {
 };
 
 const mapStateToProps = (state, props) => ({
-  expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+  income: state.income.find((inc) => inc.id === props.match.params.id)
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  startEditExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
-  startRemoveExpense: (data) => dispatch(startRemoveExpense(data)),
+  startEditIncome: (id, income) => dispatch(startEditIncome(id, income)),
+  startRemoveIncome: (data) => dispatch(startRemoveIncome(data)),
   deletePopup: () => dispatch(deletePopup()),
   editePopup: () => dispatch(editePopup())
 });

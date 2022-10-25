@@ -14,17 +14,43 @@ export const startAddExpense = (expenseData = {}) => {
     description = '',
     note = '',
     amount = 0,
-    createdAt = 0
+    createdAt = 0,
+    type= 'type-non'
   } = expenseData;
 
-  const expense = {description , note , amount , createdAt};
+  const expense = {description , note , amount , createdAt , type};
   return (dispatch , getState) => {
     const uid = getState().auth.uid;
-    database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
+    return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
       dispatch(addExpense({
         id: ref.key ,
         ...expense
       }))
+    })
+  }
+}
+
+
+//UNDO_EXPENSE
+export const undoExpense = () => ({
+  type: 'UNDO_EXPENSE'
+})
+
+export const startUndoExpense = (expenseData = {}) =>{
+  const {
+    id='',
+    description = '',
+    note = '',
+    amount = 0,
+    createdAt = 0,
+    type = 'type-none'
+  } = expenseData;
+
+  return (dispatch , getState) => {
+    const uid = getState().auth.uid;
+    const expense = {description , note , amount , createdAt ,type};
+    return database.ref(`users/${uid}/expenses/${id}`).set(expense).then(() => {
+      dispatch(undoExpense())
     })
   }
 }
@@ -39,7 +65,7 @@ export const removeExpense = ({ id } = {}) => ({
 export const startRemoveExpense = ({id} = {}) =>{
   return (dispatch , getState) => {
     const uid = getState().auth.uid;
-    database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
+    return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
       dispatch(removeExpense({id}))
     })
   }
